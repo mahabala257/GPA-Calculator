@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPA & Marks Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span>GradeCalc</span>
+      </div>
+      <p class="tagline">GPA · Marks · CGPA — all in one place</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB NAV -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="marks">
+        <span class="tab-icon">✦</span> Marks → CGPA
+      </button>
+      <button class="tab-btn" data-tab="gpa">
+        <span class="tab-icon">◆</span> GPA Calculator
+      </button>
+      <button class="tab-btn" data-tab="cgpa">
+        <span class="tab-icon">◇</span> CGPA from Semesters
+      </button>
+    </nav>
+
+    <!-- MARKS PANEL -->
+    <section class="panel active" id="panel-marks">
+      <div class="card">
+        <div class="card-header">
+          <h2>Marks → CGPA</h2>
+          <p>Enter your raw marks (0–100). Grades are assigned automatically.</p>
+        </div>
+
+        <div class="control-row">
+          <label for="marks-count">Number of Subjects</label>
+          <select id="marks-count">
+            <option value="">Select</option>
+            <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+</select>
+        </div>
+
+        <div class="subject-grid" id="marks-inputs"></div>
+
+        <button class="action-btn" id="calc-marks-btn">Calculate CGPA</button>
+      </div>
+
+      <div class="result-card hidden" id="marks-result">
+        <div class="result-top">
+          <div>
+            <div class="result-label">Your CGPA</div>
+            <div class="result-value" id="marks-cgpa">—</div>
+          </div>
+          <div class="result-badge-wrap">
+            <span class="result-badge" id="marks-badge"></span>
+          </div>
+        </div>
+        <div class="result-table" id="marks-table"></div>
+      </div>
+    </section>
+
+    <!-- GPA PANEL -->
+    <section class="panel" id="panel-gpa">
+      <div class="card">
+        <div class="card-header">
+          <h2>GPA Calculator</h2>
+          <p>Select your grade and credit hours per subject for a weighted GPA.</p>
+        </div>
+
+        <div class="control-row">
+          <label for="gpa-count">Number of Subjects</label>
+          <select id="gpa-count">
+            <option value="">Select</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+        </div>
+
+        <div class="subject-grid" id="gpa-inputs"></div>
+
+        <button class="action-btn" id="calc-gpa-btn">Calculate GPA</button>
+      </div>
+
+      <div class="result-card hidden" id="gpa-result">
+        <div class="result-top">
+          <div>
+            <div class="result-label">Your GPA</div>
+            <div class="result-value" id="gpa-value">—</div>
+          </div>
+          <div>
+            <div class="result-label">Total Credits</div>
+            <div class="result-value sm" id="gpa-credits">—</div>
+          </div>
+        </div>
+        <div class="result-table" id="gpa-table"></div>
+      </div>
+    </section>
+
+    <!-- CGPA FROM SEMESTERS PANEL -->
+    <section class="panel" id="panel-cgpa">
+      <div class="card">
+        <div class="card-header">
+          <h2>CGPA from Semesters</h2>
+          <p>Enter your GPA for each semester to compute your overall CGPA.</p>
+        </div>
+
+        <div class="control-row">
+          <label for="sem-count">Number of Semesters</label>
+          <select id="sem-count">
+            <option value="">Select</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+        </div>
+
+        <div class="subject-grid" id="sem-inputs"></div>
+
+        <button class="action-btn" id="calc-cgpa-btn">Calculate CGPA</button>
+      </div>
+
+      <div class="result-card hidden" id="cgpa-result">
+        <div class="result-top">
+          <div>
+            <div class="result-label">Your CGPA</div>
+            <div class="result-value" id="cgpa-value">—</div>
+          </div>
+        </div>
+        <div class="result-table" id="cgpa-table"></div>
+      </div>
+    </section>
+
+    <!-- GRADE REFERENCE -->
+    <div class="grade-ref-card">
+      <div class="grade-ref-title">Grade Reference</div>
+      <div class="grade-ref-grid">
+        <div class="grade-chip o">O <span>96–100 → 10</span></div>
+        <div class="grade-chip aplus">A+ <span>91–95 → 9</span></div>
+        <div class="grade-chip a">A <span>81–90 → 8</span></div>
+        <div class="grade-chip bplus">B+ <span>71–80 → 7</span></div>
+        <div class="grade-chip b">B <span>61–70 → 6</span></div>
+        <div class="grade-chip cplus">C+ <span>51–60 → 5</span></div>
+        <div class="grade-chip c">C <span>50 → 4</span></div>
+        <div class="grade-chip u">U <span>&lt;50 → 0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
