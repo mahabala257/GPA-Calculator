@@ -138,9 +138,3 @@ gpa-calculator/
 
 ---
 
-## 🙌 Author
-
-Developed by **Mahalakshmi B (mahabala257)**
-
----
-
